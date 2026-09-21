@@ -1,0 +1,26 @@
+{
+  "name": "cognifyz-task-1",
+  "version": "1.0.0",
+  "description": "Cognifyz Internship Task 1 — User Feedback website built with Node.js, Express, and EJS.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "cognifyz",
+    "internship",
+    "express",
+    "ejs",
+    "feedback"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

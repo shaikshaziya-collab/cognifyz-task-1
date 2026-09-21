@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cognifyz User Feedback | Internship Task 1</title>
+    <meta
+      name="description"
+      content="Share your feedback with Cognifyz. Internship Task 1 user feedback form."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">C</span>
+          <span>
+            <span class="brand-name">Cognifyz</span>
+            <span class="brand-sub">Internship Task 1</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#feedback" class="nav-cta">Give Feedback</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow">Cognifyz Technologies · Internship Task 1</p>
+          <h1>Help us make things better.</h1>
+          <p class="hero-copy">
+            Thoughtful feedback helps teams understand what is working, what needs
+            improvement, and how to create a better experience for everyone.
+            Your input is a valuable part of this internship project.
+          </p>
+        </div>
+      </section>
+
+      <section class="content" id="feedback">
+        <div class="container layout">
+          <aside class="info-panel" id="about">
+            <h2>Why your feedback matters</h2>
+            <p>
+              This form collects structured comments so they can be reviewed
+              clearly. Please be specific, honest, and constructive.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <span class="feature-icon" aria-hidden="true">1</span>
+                <div>
+                  <h3>Be clear</h3>
+                  <p>Describe what you experienced and what you expected.</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon" aria-hidden="true">2</span>
+                <div>
+                  <h3>Choose a category</h3>
+                  <p>This helps organize similar comments together.</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon" aria-hidden="true">3</span>
+                <div>
+                  <h3>Rate the experience</h3>
+                  <p>A 1–5 rating gives a quick snapshot of overall satisfaction.</p>
+                </div>
+              </li>
+            </ul>
+          </aside>
+
+          <section class="form-card" aria-labelledby="form-title">
+            <h2 id="form-title">Share your feedback</h2>
+            <p class="form-intro">All fields are required. We will show a confirmation after you submit.</p>
+
+            <% if (errors.form) { %>
+              <div class="alert alert-error" role="alert"><%= errors.form %></div>
+            <% } %>
+
+            <form action="/submit" method="POST" id="feedback-form" novalidate>
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  value="<%= values.name %>"
+                  required
+                  minlength="2"
+                  aria-invalid="<%= errors.name ? 'true' : 'false' %>"
+                  aria-describedby="<%= errors.name ? 'name-error' : '' %>"
+                />
+                <% if (errors.name) { %>
+                  <p class="field-error" id="name-error"><%= errors.name %></p>
+                <% } %>
+              </div>
+
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  value="<%= values.email %>"
+                  required
+                  aria-invalid="<%= errors.email ? 'true' : 'false' %>"
+                  aria-describedby="<%= errors.email ? 'email-error' : '' %>"
+                />
+                <% if (errors.email) { %>
+                  <p class="field-error" id="email-error"><%= errors.email %></p>
+                <% } %>
+              </div>
+
+              <div class="field">
+                <label for="category">Feedback Category</label>
+                <select
+                  id="category"
+                  name="category"
+                  required
+                  aria-invalid="<%= errors.category ? 'true' : 'false' %>"
+                  aria-describedby="<%= errors.category ? 'category-error' : '' %>"
+                >
+                  <option value="" disabled <%= values.category ? '' : 'selected' %>>
+                    Select a category
+                  </option>
+                  <% categories.forEach(function (item) { %>
+                    <option value="<%= item %>" <%= values.category === item ? 'selected' : '' %>>
+                      <%= item %>
+                    </option>
+                  <% }) %>
+                </select>
+                <% if (errors.category) { %>
+                  <p class="field-error" id="category-error"><%= errors.category %></p>
+                <% } %>
+              </div>
+
+              <fieldset class="field rating-field">
+                <legend>Rating</legend>
+                <p class="hint">How would you rate your overall experience?</p>
+                <div class="rating-group" role="radiogroup" aria-label="Rating from 1 to 5">
+                  <% for (let i = 1; i <= 5; i++) { %>
+                    <label class="rating-option">
+                      <input
+                        type="radio"
+                        name="rating"
+                        value="<%= i %>"
+                        <%= String(values.rating) === String(i) ? 'checked' : '' %>
+                        required
+                      />
+                      <span><%= i %></span>
+                    </label>
+                  <% } %>
+                </div>
+                <% if (errors.rating) { %>
+                  <p class="field-error"><%= errors.rating %></p>
+                <% } %>
+              </fieldset>
+
+              <div class="field">
+                <label for="message">Feedback Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  minlength="10"
+                  placeholder="Share what went well and what could be improved."
+                  aria-invalid="<%= errors.message ? 'true' : 'false' %>"
+                  aria-describedby="<%= errors.message ? 'message-error' : '' %>"
+                ><%= values.message %></textarea>
+                <% if (errors.message) { %>
+                  <p class="field-error" id="message-error"><%= errors.message %></p>
+                <% } %>
+              </div>
+
+              <button type="submit" class="btn-primary">Submit Feedback</button>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Cognifyz Internship Task 1 · User Feedback Form</p>
+      </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

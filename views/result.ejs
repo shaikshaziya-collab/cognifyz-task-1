@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You | Cognifyz Feedback</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">C</span>
+          <span>
+            <span class="brand-name">Cognifyz</span>
+            <span class="brand-sub">Internship Task 1</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/" class="nav-cta">New Response</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="result-page">
+      <div class="container">
+        <section class="result-card" aria-labelledby="thanks-title">
+          <div class="success-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.4">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 12.5l2.8 2.8L16.5 9"></path>
+            </svg>
+          </div>
+          <h1 id="thanks-title">Thank You, <%= feedback.name %>!</h1>
+          <p class="result-copy">
+            Your feedback was received successfully. Here is a summary of what you submitted.
+          </p>
+
+          <dl class="summary">
+            <div>
+              <dt>Name</dt>
+              <dd><%= feedback.name %></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><%= feedback.email %></dd>
+            </div>
+            <div>
+              <dt>Category</dt>
+              <dd><%= feedback.category %></dd>
+            </div>
+            <div>
+              <dt>Rating</dt>
+              <dd><%= feedback.rating %> / 5</dd>
+            </div>
+            <div class="summary-full">
+              <dt>Feedback</dt>
+              <dd><%= feedback.message %></dd>
+            </div>
+          </dl>
+
+          <a class="btn-primary" href="/">Submit another response</a>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Cognifyz Internship Task 1 · User Feedback Form</p>
+      </div>
+    </footer>
+  </body>
+</html>
