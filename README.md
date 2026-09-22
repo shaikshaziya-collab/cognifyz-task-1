@@ -4,6 +4,12 @@ A Node.js web application that collects user feedback through a structured form,
 
 This project was built for the Cognifyz Technologies internship (Task 1).
 
+## 🚀 Live Demo
+
+🌐 **Live Website:** https://cognifyz-task-1-h7th.onrender.com
+
+💻 **GitHub Repository:** https://github.com/shaikshaziya-collab/cognifyz-task-1
+
 ## Project overview
 
 Visitors land on a branded feedback page, fill in their name, email, category, rating, and comments, then submit the form with `POST /submit`. Valid submissions are logged in the server console and shown on a thank-you page. Invalid submissions return the form with field-level error messages. Unknown routes render a custom 404 page.
