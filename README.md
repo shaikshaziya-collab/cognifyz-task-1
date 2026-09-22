@@ -6,7 +6,7 @@ This project was built for the Cognifyz Technologies internship (Task 1).
 
 ## 🚀 Live Demo
 
-🌐 **Live Website:** https://cognifyz-task-1-h7th.onrender.com
+🌐 **Live Website:** https://cognifyz-task-1-htjh.onrender.com
 
 💻 **GitHub Repository:** https://github.com/shaikshaziya-collab/cognifyz-task-1
 
